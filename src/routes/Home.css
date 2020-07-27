@@ -4,10 +4,15 @@
     background-color: antiquewhite;
 }
 
-#logo{
-    font-size: 30px;
-    font-weight: bold;
-    margin-left: 20px;
+#logodiv{
+    width:200px;
+    height:60px;
+    background-image: url("../components/logo_w.png");
+    background-size: 200px;
+    background-repeat: no-repeat;
+    background-position:center center;
+    margin-right: 10px;
+    display: inline-block;
 }
 
 
@@ -17,3 +22,23 @@
     font-size: 20px;
 }
 
+
+#components-layout-demo-fixed .logo {
+    width: 120px;
+    height: 31px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px 24px 16px 0;
+    float: left;
+  }
+
+.site-layout .site-layout-background {
+background: #fff;
+}
+
+Menu.Item{
+    width:300;
+}
+
+#searchbox{
+    display: inline-block;
+}

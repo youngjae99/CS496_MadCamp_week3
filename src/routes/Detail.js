@@ -1,8 +1,8 @@
 import React, {Component} from "react"
 import './Detail.css';
-import { Button, Progress, Icon, Loader, Dimmer} from 'semantic-ui-react'
+import { Button, Icon, Loader, Dimmer} from 'semantic-ui-react'
 import RecipeContainer from "../components/RecipeContainer";
-
+import { Progress } from 'antd';
   
 class Detail extends Component{
     constructor(props) {
@@ -97,7 +97,7 @@ class Detail extends Component{
                         </div>
         
                         <div>
-                        <Progress percent={100} success>  </Progress>
+                        <Progress percent={100} />
                         </div>
         
                         <Dimmer active inline='centered' id="loadingAnim" active={this.state.loading}>
@@ -136,7 +136,7 @@ class Detail extends Component{
                 </div>
 
                 <div>
-                    <Progress value={this.state.stepnum} total={this.state.recipe.length} progress='ratio' />
+                    <Progress percent={(this.state.stepnum/this.state.recipe.length)*100} width="100%"/>
                 </div>
 
                 <Dimmer active inline='centered' id="loadingAnim" active={this.state.loading}>

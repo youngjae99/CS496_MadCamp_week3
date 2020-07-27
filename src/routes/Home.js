@@ -4,6 +4,10 @@ import Detail from "./Detail";
 import Item from "../components/Item";
 import "./Home.css";
 import Navigation from "../components/Navigation";
+import { Layout, Menu, Breadcrumb, Typography, Avatar, Input} from 'antd';
+const { Header, Content, Footer } = Layout;
+const { Search } = Input;
+
 
 var foodlist = []
 
@@ -30,24 +34,41 @@ class Home extends Component{
     render(){
         console.log("render in!");
         return (
-            <div>
-            <Navigation/>
-            <div>
-                <ul>
-                    {
-                        console.log(this.state.foods),
-                        this.state.foods.length!=0 ?
-                        this.state.foods.map(item=>
-                            <Item 
-                                title={item.title} 
-                                img={item.img}/>
-                            )
-                        :
-                            <p id="loadingMsg">Data Loading...</p>
-                    }
-                </ul>
-            </div>
-            </div>
+          <Layout>
+            <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+              <div className="logo" id="logodiv">
+              </div>
+              <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} style={{'display':'inline-block', 'vertical-align': 'top'}}>
+                <Menu.Item key="1" style={{'padding-left':10, 'padding-right':10}}>Discover</Menu.Item>
+                <Menu.Item key="2" style={{'padding-left':10, 'padding-right':10}}>My Menu</Menu.Item>
+                <Menu.Item key="3" style={{'padding-left':10, 'padding-right':10}}>nav 3</Menu.Item>
+              </Menu>
+              <Search id="searchbox"
+                placeholder="input search text"
+                onSearch={value => console.log(value)}
+                style={{ width: 200, 'float':'right', 'vertical-align':'middle'}}
+              />
+            </Header>
+
+            <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
+              <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
+                <ul class="foodlist">
+                      {
+                          console.log(this.state.foods),
+                          this.state.foods.length!=0 ?
+                          this.state.foods.map(item=>
+                              <Item
+                                  title={item.title} 
+                                  img={item.img}/>
+                              )
+                              :
+                              <p id="loadingMsg">Data Loading...</p>
+                      }
+                  </ul>
+              </div>
+            </Content>
+            <Footer style={{ textAlign: 'center' }}>KAIST ?2020 Created by Youngjae Jang and Hongseok Kang</Footer>
+          </Layout>
         );
     }
     

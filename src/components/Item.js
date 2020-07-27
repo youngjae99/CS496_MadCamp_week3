@@ -1,11 +1,13 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import "./Item.css";
-import { Button, Grid, Popup } from 'semantic-ui-react';
+//import { Button, Grid, Popup } from 'semantic-ui-react';
 import ReactDOM from "react-dom";
 import QRCode from "react-qr-code";
-import {Popover} from 'antd';
+import {Popover, Button, Typography} from 'antd';
+import "antd/dist/antd.css";
 
+const { Title } = Typography;
 
 
 class Item extends Component{
@@ -36,34 +38,26 @@ class Item extends Component{
     render(){
         return(
             <li key={this.props.title}>
+                <Link to={'/mobile/'+this.props.title}
+                        param={this.props.title}
+                        >
                     <div class="cropping">
                         <img id="thumb" src={this.props.img}></img>
                     </div>
-                    <p class="title">{this.props.title.replace(/_/g," ")}</p>
-                    <Link to={'/menu/'+this.props.title}
-                        param={this.props.title}
-                        >
-                        <button class="ui button">Recipe</button>
-                    </Link>
-                <Popup wide trigger={<Button content={<i class="fas fa-qrcode fa-2x"></i>} />} position='bottom center' on='click'>
-                        <Grid divided columns='equal'>
-                        <Grid.Column>
-                            <p>Scan this code with your phone</p>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <QRCode value={"/menu/"+this.props.title} size="100" class="qr"/>
-                        </Grid.Column>
-                        </Grid>
-                    </Popup>
-
+                    <Title level={4}>
+                        {this.props.title.replace(/_/g," ")}
+                    </Title>
+                    </Link>             
+                
                     <Popover
-                        content={<a onClick={this.hide}>Close</a>}
-                        title="Title"
+                        content={<div><p><QRCode value={"/mobile/"+this.props.title} size="100" class="qr"/></p><a onClick={this.hide}>Close</a></div>}
+                        title="Scan this!"
+                        placement="bottom"
                         trigger="click"
                         visible={this.state.visible}
                         onVisibleChange={this.handleVisibleChange}
                     >
-                        <Button type="primary">Click me</Button>
+                        <Button type="primary">Send to phone</Button>
                     </Popover>
             </li>
         );

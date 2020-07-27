@@ -1,6 +1,9 @@
 import React, {Component} from "react";
 import Timer from "./Timer";
-import { Button, Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
+import { Result, Button } from 'antd';
+import { SmileOutlined } from '@ant-design/icons';
+
 
 
 class Clock extends React.Component {
@@ -112,10 +115,14 @@ class RecipeContainer extends Component{
         }
         else if(this.props.special==2){
             return (
-                <div id="lastStep">
-                    <h2> Well Done! </h2>
-                    <i class="far fa-check-circle fa-4x" ></i>
-                </div>
+                <Result
+                    icon={<SmileOutlined/>}
+                    title="Well Done!"
+                    subTitle="You did great job. Enjoy your meal :)"
+                    extra={[
+                    <Button type="primary" key="console"> Go to Main </Button>
+                    ]}
+                />
             );
         }
         else{
