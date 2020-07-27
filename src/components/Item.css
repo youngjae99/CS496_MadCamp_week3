@@ -1,0 +1,41 @@
+
+li{
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+    list-style: none;
+    display: inline-block;
+    text-decoration: none;
+}
+li:hover {
+    background-color: darkgray;
+}
+li:active{
+    background-color: gray;
+}
+
+#thumb{
+    width:100%;
+    
+}
+
+p{
+    text-decoration: none;
+}
+
+.title{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    color: black;
+    text-decoration: none !important;
+}
+
+li #mobile{
+    background-color: gray;
+}
+
+.qr{
+    margin: 20px;
+}
