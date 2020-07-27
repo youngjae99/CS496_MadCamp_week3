@@ -17,12 +17,22 @@ li:active{
 }
 
 #thumb{
-    width:100%;
-    
+    cursor: pointer;
+}
+
+.cropping{
+    max-width: 180px;
+    max-height: 180px;
+    overflow: hidden;
+}
+
+.cropping img{
+    max-width: 100%;
 }
 
 p{
     text-decoration: none;
+    cursor:pointer;
 }
 
 .title{

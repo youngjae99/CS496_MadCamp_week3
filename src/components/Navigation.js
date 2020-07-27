@@ -4,10 +4,13 @@ class Navigation extends Component{
     render(){
         return (
             <div>
-                <div>
+                <div class="logoDiv">
                 Logo
                 </div>
-                <div>
+                <div class="searchDiv">
+                Search Bar
+                </div>
+                <div class="menuDiv">
                 Menu
                 </div>
             </div>

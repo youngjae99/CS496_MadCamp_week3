@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Detail from "./Detail";
 import Item from "../components/Item";
 import "./Home.css";
+import Navigation from "../components/Navigation";
 
 var foodlist = []
 
@@ -30,9 +31,7 @@ class Home extends Component{
         console.log("render in!");
         return (
             <div>
-            <div class="topBar">
-                <p id="logo">Logo</p>
-            </div>
+            <Navigation/>
             <div>
                 <ul>
                     {
