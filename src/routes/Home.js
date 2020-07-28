@@ -6,18 +6,25 @@ import "./Home.css";
 import MainList from "./MainList";
 import FoodPage from "./FoodPage";
 import MyList from "./MyList";
-import { Layout, Menu, Breadcrumb, Typography, Avatar, Input} from 'antd';
+import { Layout, Menu, Breadcrumb, Typography, Avatar, Input, Popover} from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+import Login from './Login';
 const { Header, Content, Footer } = Layout;
 const { Search } = Input;
 
 
-var foodlist = []
+const content = (
+  <div>
+    <Login/>
+  </div>
+);
 
 class Home extends Component{
     state = { 
         foods: [],
         foodpage: false,
-        current: "1"
+        current: "1",
+        login: false
     }
     componentWillMount(){
         
@@ -27,7 +34,6 @@ class Home extends Component{
         console.log("food page!");
         this.setState({foodpage:true});
       }
-
     }
   
     handleClick = e => {
@@ -48,11 +54,9 @@ class Home extends Component{
                   <div className="logo" id="logodiv">
                   </div>
                 </Link>
-                
                 <Menu onClick={this.handleClick} selectedKeys={[current]} theme="dark" mode="horizontal" style={{'display':'inline-block', 'vertical-align': 'top'}}>
-                  <Menu.Item key="1" style={{'padding-left':10, 'padding-right':10}}>Home</Menu.Item>
-                  <Menu.Item key="2" style={{'padding-left':10, 'padding-right':10}}>Discover</Menu.Item>
-                  <Menu.Item key="3" style={{'padding-left':10, 'padding-right':10}}>My List</Menu.Item>
+                  <Menu.Item key="1" style={{'padding-left':10, 'padding-right':10}}>Discover</Menu.Item>
+                  <Menu.Item key="2" style={{'padding-left':10, 'padding-right':10}}>MyList</Menu.Item>
                 </Menu>
                 <div id="searchbox">
               <Search placeholder="input search text" onSearch={value => console.log(value)}  enterButton />
@@ -80,9 +84,8 @@ class Home extends Component{
                 </Link>
                 
                 <Menu onClick={this.handleClick} selectedKeys={[current]} theme="dark" mode="horizontal" style={{'display':'inline-block', 'vertical-align': 'top'}}>
-                <Menu.Item key="1" style={{'padding-left':10, 'padding-right':10}}>Home</Menu.Item>
-                <Menu.Item key="2" style={{'padding-left':10, 'padding-right':10}}>Discover</Menu.Item>
-                <Menu.Item key="3" style={{'padding-left':10, 'padding-right':10}}>My List</Menu.Item>
+                <Menu.Item key="1" style={{'padding-left':10, 'padding-right':10}}>Discover</Menu.Item>
+                  <Menu.Item key="2" style={{'padding-left':10, 'padding-right':10}}>MyList</Menu.Item>
                 </Menu>
                 <div id="searchbox">
               <Search placeholder="input search text" onSearch={value => console.log(value)}  enterButton />
@@ -105,13 +108,15 @@ class Home extends Component{
               <div className="logo" id="logodiv">
               </div>
               <Menu onClick={this.handleClick} selectedKeys={[current]} theme="dark" mode="horizontal" defaultSelectedKeys={['1']} style={{'display':'inline-block', 'vertical-align': 'top'}}>
-                <Menu.Item key="1" style={{'padding-left':10, 'padding-right':10}}>Home</Menu.Item>
-                <Menu.Item key="2" style={{'padding-left':10, 'padding-right':10}}>Discover</Menu.Item>
-                <Menu.Item key="3" style={{'padding-left':10, 'padding-right':10}}>My List</Menu.Item>
+                  <Menu.Item key="1" style={{'padding-left':10, 'padding-right':10}}>Discover</Menu.Item>
+                  <Menu.Item key="2" style={{'padding-left':10, 'padding-right':10}}>MyList</Menu.Item>
               </Menu>
               <div id="searchbox">
               <Search placeholder="input search text" onSearch={value => console.log(value)}  enterButton />
               </div>
+              <Popover content={content} title="Login" trigger="hover" placement="bottomRight">
+                <Avatar id="avatar" size="large" icon={<UserOutlined />}/>
+              </Popover>
             </Header>
 
             <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>

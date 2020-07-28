@@ -7,17 +7,6 @@ import QRCode from "react-qr-code";
 const { Header, Sider, Content } = Layout;
 const { Title, Paragraph, Text } = Typography;
 
-var gis = require('g-i-s');
-
-function logResults(error, results) {
-  if (error) {
-    console.log("gis",error);
-  }
-  else {
-    console.log("gis",JSON.stringify(results, null, '  '));
-  }
-}
-
 class FoodPage extends Component{
     constructor(props) {
       super(props);
@@ -75,8 +64,6 @@ class FoodPage extends Component{
     }
     componentDidMount(){
       //Tts.speak('Hello, world!');
-      console.log("gis starting");
-      gis('cats', logResults);
     }
 
     state = {

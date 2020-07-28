@@ -9,14 +9,14 @@ body{
 }
 
 #stepDiv{
-    background-color: lightgrey;
+    overflow: scroll;
     width: 100%;
-    height: 30%;
+    height: 190px;
     padding: 10px;
 }
 
 #step_zero{
-    background-color: lightgrey;
+    
     width:100%;
     height: 60%;
     padding: 10px;
@@ -25,7 +25,6 @@ body{
 #timerDiv{
     position: absolute;
     bottom:10;
-    background-color: gray;
     width: 100%;
     height: 30%;
     text-align: center;
@@ -41,30 +40,9 @@ body{
     bottom:0;
     width:100%;
     height: 10%;
-    background-color: antiquewhite;
     display: inline-block;
+    padding:10px;
 }
-
-.pageCont Button{
-    width:70;
-    height:70;
-    padding: 20px;
-    margin:5px;
-    border:none;
-    border-radius: 5px;
-    background-color: black;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-    transition: color 0.3s, background-color 0.3s;
-}
-
-
-
-Button:hover {
-    background-color: white;
-    color: black;
-  }
 
 #recipeTitle{
     margin:10px;
@@ -74,7 +52,7 @@ Button:hover {
 }
 #stepNumber{
     margin-left:10px;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     color: black;
 }
 
@@ -111,10 +89,17 @@ i{
 }
 
 #imgbox{
-    width: 100%;
+    display: inline;
     text-align: center;
+}
+#ingrbox{
+    display: inline;
 }
 
 #lastStep{
     text-align: center;
+}
+
+#mainImg{
+    width: 100px;
 }

@@ -9,17 +9,19 @@ const { Title } = Typography;
 
 
 class Login extends Component{
-
+    state={
+        resp:"",
+        id:""
+    }
 
     onFinish = values => {
-        console.log('Received values of form: ', values);
         axios.post('http://192.249.19.243:0280/user/login', {
-            params: {
-                id: values.username,
-                password: values.password
-            }
+            id: values.username,
+            password: values.password
         }).then((response)=>{
             console.log(response);
+            this.setState({resp:response});
+            this.setState({id:values.username});
         })
         .catch((error)=>{
             console.log(error);
@@ -27,9 +29,18 @@ class Login extends Component{
     };
         
     render(){
+        console.log("this", this.state.resp);
+        if(this.state.resp.data=="1"){
+            return(
+                <div id="loginPageDiv">
+                    <p>Welcome</p>
+                    <p>{this.state.id}</p>
+                    
+                </div>
+            );
+        }
         return(
             <div id="loginPageDiv">
-                <Title>Sign in to HandyCoook</Title>
                 <div id="loginbox">
                 <Form
                     name="normal_login"

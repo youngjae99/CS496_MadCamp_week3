@@ -42,8 +42,13 @@ Menu.Item{
 }
 
 #searchbox{
-    display: inline-block;
-    padding-top: 15px;
-    height:100%;
-    width: 200px;
+    position:absolute;
+    right:300px;
+    top:15px;
+}
+
+#avatar{
+    position:absolute;
+    right:15px;
+    top:10px;
 }

@@ -1,8 +1,9 @@
 import React, {Component} from "react"
 import './Detail.css';
-import { Button, Icon, Loader, Dimmer} from 'semantic-ui-react'
 import RecipeContainer from "../components/RecipeContainer";
-import { Typography, Progress, Steps } from 'antd';
+import { Typography, Progress, Steps, Button } from 'antd';
+import { RightOutlined, LeftOutlined } from '@ant-design/icons';
+
 const { Title } = Typography;
 const {Step} = Steps;
 
@@ -20,8 +21,7 @@ class Detail extends Component{
           special:1
         }
         
-        
-        
+    
         this.setState({title:this.props.location.pathname.split('/')[2]});
         console.log("titlebar", this.props.location.pathname.split('/')[2]);
         //Ingredients Fetch
@@ -108,10 +108,6 @@ class Detail extends Component{
                         <Progress percent={100} />
                         </div>
         
-                        <Dimmer active inline='centered' id="loadingAnim" active={this.state.loading}>
-                            <Loader size='big'>Loading</Loader>
-                        </Dimmer>
-        
                         <RecipeContainer special={special} stepnum={this.state.stepnum} cur_recipe={cur_recipe} cur_count={cur_count} img={"http://192.249.19.243:0280/main/image/"+this.props.location.pathname.split('/')[2]} ingredients={this.state.ingredients}/>
         
                         <div class="pageCont">
@@ -138,36 +134,20 @@ class Detail extends Component{
             <div>
                 <div>
                     <Title level={4}>{this.props.location.pathname.split('/')[2].replace(/_/g," ")}</Title>
-                    <Title level={2} id="stepNumber">Step {this.state.stepnum}</Title>
+                    <Title level={2} id="stepNumber" style={{'margin-top':'0px'}}>Step {this.state.stepnum}</Title>
                 </div>
                 <div>
-                    <Progress percent={(this.state.stepnum/this.state.recipe.length)*100} width="100%"/>
-                    <Steps
-                    type="navigation"
-                    current={this.state.stepnum}
-                    onChange={this.onChange}
-                    className="site-navigation-steps"
-                    >
-                    <Step status="finish" title="Step 1" />
-                    <Step status="process" title="Step 2" />
-                    <Step status="wait" title="Step 3" />
-                    <Step status="wait" title="Step 4" />
-                    
-                    </Steps>
+                    <Progress percent={(this.state.stepnum/this.state.recipe.length)*100} width="90%" format={percent => `${percent.toFixed(0)}%`}/>
                 </div>
-
-                <Dimmer active inline='centered' id="loadingAnim" active={this.state.loading}>
-                    <Loader size='big'>Loading</Loader>
-                </Dimmer>
 
                 <RecipeContainer special={special} stepnum={this.state.stepnum} cur_recipe={cur_recipe} cur_count={cur_count} img={"http://192.249.19.243:0280/main/image/"+this.props.location.pathname.split('/')[2]} ingredients={this.state.ingredients}/>
 
                 <div class="pageCont">
                     <span id="prevBtn">
-                        <Button  onClick={this.toPrevPage.bind(this)}><i class="fas fa-angle-left"></i></Button>
+                        <Button type="primary" size="large" shape="circle" icon={<LeftOutlined />} onClick={this.toPrevPage.bind(this)}/>
                     </span>
                     <span id="nextBtn">
-                        <Button onClick={this.toNextPage.bind(this)}><i class="fas fa-angle-right"></i></Button>
+                        <Button type="primary"  size="large" shape="circle" icon={<RightOutlined />} onClick={this.toNextPage.bind(this)}/>
                     </span>
                 </div>
             </div>

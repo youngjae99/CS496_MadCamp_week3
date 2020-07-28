@@ -62,7 +62,7 @@ class Item extends Component{
                 actions={[
                     <HeartOutlined key="like" onClick={this.like}/>,
                     <Popover
-                    content={<div><p><QRCode value={"/mobile/"+this.props.title} size="100" class="qr"/></p><a onClick={this.hide}>Close</a></div>}
+                    content={<div><p><QRCode value={"143.248.229.69:3000/#"+"/mobile/"+this.props.title} size="100" class="qr"/></p><a onClick={this.hide}>Close</a></div>}
                     title="Scan this!"
                     placement="bottom"
                     trigger="click"
