@@ -42,14 +42,13 @@ class Item extends Component{
         console.log("item loaded!");
     }
 
-    like(){
-        console.log("like btn pressed", this.props.title);
+    like({title}){
+        console.log("like btn pressed", title);
         axios.post('http://192.249.19.243:0280/user/like_food', {
-            params: {
-                id: "youngjae",
-                recipe_name: this.props.title
-            }
+            id: "youngjae",
+            recipe_name: title
         });
+        
     }
       
     render(){
@@ -60,7 +59,7 @@ class Item extends Component{
                 style={{ width: 240 }}
                 cover={<img alt="example" src={this.props.img} />}
                 actions={[
-                    <HeartOutlined key="like" onClick={this.like}/>,
+                    <HeartOutlined key="like" onClick={this.like(this.props.title)}/>,
                     <Popover
                     content={<div><p><QRCode value={"143.248.229.69:3000/#"+"/mobile/"+this.props.title} size="100" class="qr"/></p><a onClick={this.hide}>Close</a></div>}
                     title="Scan this!"

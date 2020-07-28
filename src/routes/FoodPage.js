@@ -126,7 +126,7 @@ class FoodPage extends Component{
                 minHeight: 280,
               }}>
                 <img width="200" src={"http://192.249.19.243:0280/main/image/"+this.props.title}></img>
-                <Paragraph>{this.state.infos[0]}</Paragraph>
+                <Title level={4}>{this.state.infos[0]}</Title>
                 <Divider/>
                 <Title level={2}>Ingredients</Title>
                 <Paragraph>
