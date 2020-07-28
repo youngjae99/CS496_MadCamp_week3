@@ -22,6 +22,8 @@ class Login extends Component{
             console.log(response);
             this.setState({resp:response});
             this.setState({id:values.username});
+            window.sessionStorage.setItem('logged', true);
+            window.sessionStorage.setItem('id', values.username);
         })
         .catch((error)=>{
             console.log(error);

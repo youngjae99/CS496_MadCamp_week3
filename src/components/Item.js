@@ -43,11 +43,17 @@ class Item extends Component{
     }
 
     like({title}){
-        console.log("like btn pressed", title);
-        axios.post('http://192.249.19.243:0280/user/like_food', {
-            id: "youngjae",
-            recipe_name: title
-        });
+        if(window.sessionStorage.getItem('logged')){
+            console.log(window.sessionStorage.getItem('id')," logged in");
+            console.log("like btn pressed", title);
+            axios.post('http://192.249.19.243:0280/user/like_food', {
+                id: "youngjae",
+                recipe_name: title
+            });
+        }
+        else{
+            alert("Please Log in!");
+        }
         
     }
       
