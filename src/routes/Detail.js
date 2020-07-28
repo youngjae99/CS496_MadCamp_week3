@@ -131,7 +131,7 @@ class Detail extends Component{
         return (
             <div>
                 <div>
-                    <p id="recipeTitle">{this.props.location.pathname.split('/')[2].replace("_"," ")}</p>
+                    <p id="recipeTitle">{this.props.location.pathname.split('/')[2].replace(/_/g," ")}</p>
                     <h1 id="stepNumber">Step {this.state.stepnum}</h1>
                 </div>
 

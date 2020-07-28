@@ -1,55 +1,68 @@
-import React, {Component} from "react"
+import React, {Component} from "react";
+import { Link } from "react-router-dom";
+import Detail from "./Detail";
+import Item from "../components/Item";
+import Navigation from "../components/Navigation";
+import { PageHeader, Tag, Button, Statistic, Descriptions, Row } from 'antd';
 
-import { Layout, Menu, PageHeader, Tabs, Button, Statistic, Descriptions } from 'antd';
-const { Header, Content, Footer } = Layout;
-const { TabPane } = Tabs;
-/*
-const renderContent = (column = 2) => (
-    <Descriptions size="small" column={column}>
-      <Descriptions.Item label="Created">Lili Qu</Descriptions.Item>
-      <Descriptions.Item label="Association">
-        <a>421421</a>
-      </Descriptions.Item>
-      <Descriptions.Item label="Creation Time">2017-01-10</Descriptions.Item>
-      <Descriptions.Item label="Effective Time">2017-10-10</Descriptions.Item>
-      <Descriptions.Item label="Remarks">
-        Gonghu Road, Xihu District, Hangzhou, Zhejiang, China
-      </Descriptions.Item>
-    </Descriptions>
-);
-  
-const extraContent = (
-    <div
-      style={{
-        display: 'flex',
-        width: 'max-content',
-        justifyContent: 'flex-end',
-      }}
-    >
-      <Statistic
-        title="Status"
-        value="Pending"
-        style={{
-          marginRight: 32,
-        }}
-      />
-      <Statistic title="Price" prefix="$" value={568.08} />
-    </div>
-);
-  
-const Content = ({ children, extra }) => {
-    return (
-      <div className="content">
-        <div className="main">{children}</div>
-        <div className="extra">{extra}</div>
-      </div>
-    );
-};
-*/
+
+var foodlist = []
+
 class FoodPage extends Component{
+    constructor(props) {
+      super(props);
+      this.state = {
+        title:"",
+        loading:true,
+        ingredients: [],
+        recipe: [],
+        times:[],
+        stepnum: 0,
+        stepArr:"",
+        special:1
+      }
+      //this.setState({title: this.props.location.pathname.split('/food/')[1]});
+      console.log("title : ",this.props.title);
+    }
+
+    componentWillMount(){
+        
+    }
+    componentDidMount(){
+    }
+        
     render(){
+        console.log("Main List render in!");
+        
         return (
-            <p></p>
+          <>
+          <PageHeader
+            onBack={() => window.history.back()}
+            title={this.props.title}
+            tags={<Tag color="blue">Running</Tag>}
+            subTitle="This is a subtitle"
+            extra={[
+              <Button key="3">Operation</Button>,
+              <Button key="2">Operation</Button>,
+              <Button key="1" type="primary">
+                Primary
+              </Button>,
+            ]}
+          >
+            <Row>
+              <Statistic title="Status" value="Pending" />
+              <Statistic
+                title="Price"
+                prefix="$"
+                value={568.08}
+                style={{
+                  margin: '0 32px',
+                }}
+              />
+              <Statistic title="Balance" prefix="$" value={3345.08} />
+            </Row>
+          </PageHeader>
+          </>
         );
     }
 }

@@ -38,16 +38,15 @@ class Item extends Component{
     render(){
         return(
             <li key={this.props.title}>
-                <Link to={'/mobile/'+this.props.title}
-                        param={this.props.title}
-                        >
+                <Link to={'/food/'+this.props.title}
+                        param={this.props.title}>
                     <div class="cropping">
                         <img id="thumb" src={this.props.img}></img>
                     </div>
                     <Title level={4}>
                         {this.props.title.replace(/_/g," ")}
                     </Title>
-                    </Link>             
+                    </Link>
                 
                     <Popover
                         content={<div><p><QRCode value={"/mobile/"+this.props.title} size="100" class="qr"/></p><a onClick={this.hide}>Close</a></div>}
