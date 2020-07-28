@@ -6,7 +6,7 @@ import ReactDOM from "react-dom";
 import QRCode from "react-qr-code";
 import {Popover, Button, Typography, Card} from 'antd';
 import { HeartOutlined, QrcodeOutlined } from '@ant-design/icons';
-
+import axios from 'axios';
 import "antd/dist/antd.css";
 
 const { Title } = Typography;
@@ -41,6 +41,16 @@ class Item extends Component{
     componentDidMount(){
         console.log("item loaded!");
     }
+
+    like(){
+        console.log("like btn pressed", this.props.title);
+        axios.post('http://192.249.19.243:0280/user/like_food', {
+            params: {
+                id: "youngjae",
+                recipe_name: this.props.title
+            }
+        });
+    }
       
     render(){
         return(
@@ -50,7 +60,7 @@ class Item extends Component{
                 style={{ width: 240 }}
                 cover={<img alt="example" src={this.props.img} />}
                 actions={[
-                    <HeartOutlined key="like" />,
+                    <HeartOutlined key="like" onClick={this.like}/>,
                     <Popover
                     content={<div><p><QRCode value={"/mobile/"+this.props.title} size="100" class="qr"/></p><a onClick={this.hide}>Close</a></div>}
                     title="Scan this!"
@@ -64,7 +74,7 @@ class Item extends Component{
                     
                 <Link to={'/food/'+this.props.title}
                 param={this.props.title}>
-                <Meta title={this.props.title.replace(/_/g," ")} description="www.instagram.com" />
+                <Meta title={this.props.title.replace(/_/g," ")}/>
                 </Link>                
             </Card>
             </li>

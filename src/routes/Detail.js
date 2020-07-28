@@ -2,7 +2,10 @@ import React, {Component} from "react"
 import './Detail.css';
 import { Button, Icon, Loader, Dimmer} from 'semantic-ui-react'
 import RecipeContainer from "../components/RecipeContainer";
-import { Progress } from 'antd';
+import { Typography, Progress, Steps } from 'antd';
+const { Title } = Typography;
+const {Step} = Steps;
+
   
 class Detail extends Component{
     constructor(props) {
@@ -16,6 +19,8 @@ class Detail extends Component{
           stepArr:"",
           special:1
         }
+        
+        
         
         this.setState({title:this.props.location.pathname.split('/')[2]});
         console.log("titlebar", this.props.location.pathname.split('/')[2]);
@@ -74,9 +79,12 @@ class Detail extends Component{
 
     state = { percent: 33 }
 
+    onChange = stepnum => {
+        console.log('onChange:', stepnum);
+        this.setState({ stepnum });
+        };
+
     render(){
-        //console.log(location.state.title);
-        
         var {cur_recipe} = "nothing";
         var {cur_count} = "0";
         var {special} = 1;
@@ -117,8 +125,6 @@ class Detail extends Component{
                     </div>
                 );
 
-
-
             }
             else{
                 cur_recipe = this.state.recipe[this.state.stepnum-1];
@@ -131,12 +137,23 @@ class Detail extends Component{
         return (
             <div>
                 <div>
-                    <p id="recipeTitle">{this.props.location.pathname.split('/')[2].replace(/_/g," ")}</p>
-                    <h1 id="stepNumber">Step {this.state.stepnum}</h1>
+                    <Title level={4}>{this.props.location.pathname.split('/')[2].replace(/_/g," ")}</Title>
+                    <Title level={2} id="stepNumber">Step {this.state.stepnum}</Title>
                 </div>
-
                 <div>
                     <Progress percent={(this.state.stepnum/this.state.recipe.length)*100} width="100%"/>
+                    <Steps
+                    type="navigation"
+                    current={this.state.stepnum}
+                    onChange={this.onChange}
+                    className="site-navigation-steps"
+                    >
+                    <Step status="finish" title="Step 1" />
+                    <Step status="process" title="Step 2" />
+                    <Step status="wait" title="Step 3" />
+                    <Step status="wait" title="Step 4" />
+                    
+                    </Steps>
                 </div>
 
                 <Dimmer active inline='centered' id="loadingAnim" active={this.state.loading}>

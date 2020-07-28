@@ -2,7 +2,7 @@
   "name": "pr3",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://192.249.19.243:0280",
+  "proxy": "https://localhost:3000",
   "dependencies": {
     "@google-cloud/text-to-speech": "^3.0.1",
     "@material-ui/core": "^4.11.0",

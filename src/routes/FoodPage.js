@@ -28,6 +28,7 @@ class FoodPage extends Component{
         ingredients: [],
         recipe: [],
         times:[],
+        infos:[],
         stepnum: 0,
         stepArr:"",
         special:1
@@ -61,14 +62,16 @@ class FoodPage extends Component{
            .then(()=>this.setState({loading_2: false}));
     }
 
-    getImage(){
-
+    getInfos(){
+      fetch('http://192.249.19.243:280/main/food_info/'+this.props.title)
+           .then(res => res.json())
+           .then(data => this.setState({infos:data}));
     }
 
     componentWillMount(){
       this.getIngredient();
       this.getRecipe();
-      this.getImage();
+      this.getInfos();
     }
     componentDidMount(){
       //Tts.speak('Hello, world!');
@@ -116,11 +119,12 @@ class FoodPage extends Component{
             <Row>
               <Statistic
                 title="Total Time"
-                prefix="$"
-                value="1234" />
+                prefix={<i class="far fa-clock fa-1x"></i>}
+                value={this.state.infos[1]} />
               <Statistic
                 title="Difficulty"
-                value="Hard"
+                prefix={<i class="far fa-laugh fa-1x"></i>}
+                value={this.state.infos[2]}
                 style={{
                   margin: '0 32px',
                 }}
@@ -135,6 +139,7 @@ class FoodPage extends Component{
                 minHeight: 280,
               }}>
                 <img width="200" src={"http://192.249.19.243:0280/main/image/"+this.props.title}></img>
+                <Paragraph>{this.state.infos[0]}</Paragraph>
                 <Divider/>
                 <Title level={2}>Ingredients</Title>
                 <Paragraph>
