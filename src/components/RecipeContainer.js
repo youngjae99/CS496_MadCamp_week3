@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Icon } from 'semantic-ui-react'
 import { Result, Button } from 'antd';
 import { SmileOutlined } from '@ant-design/icons';
+import Speech from 'react-speech';
 
 
 
@@ -131,6 +132,11 @@ class RecipeContainer extends Component {
         <div>
           <div id="stepDiv">
             <p id="currentStep"> {this.props.cur_recipe} </p>
+            <p id="currentStep"> <Speech
+              text={this.props.cur_recipe}
+              voice="Google UK English Female"
+              rate="0.8" />
+            </p>
             <p> {this.state.steps} </p>
           </div>
           <div id="timerDiv">
