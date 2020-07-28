@@ -29,10 +29,11 @@ class MainList extends Component{
                     this.setState({foods: foodlist.map(item => ({title:item, img:"http://192.249.19.243:0280/main/image/"+item}))});
                 }
             )
-            .then(()=>this.setState({loading: false}));
+            .then(()=>this.setState({loading: false}))
+            .then(console.log("Mainlist items loaded!"));
     }
     componentDidMount(){
-
+        console.log("finished");
     }
         
     render(){

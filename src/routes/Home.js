@@ -46,16 +46,14 @@ class Home extends Component{
                   <Menu.Item key="2" style={{'padding-left':10, 'padding-right':10}}>My Menu</Menu.Item>
                   <Menu.Item key="3" style={{'padding-left':10, 'padding-right':10}}>nav 3</Menu.Item>
                 </Menu>
-                <Search id="searchbox"
-                  placeholder="input search text"
-                  onSearch={value => console.log(value)}
-                  style={{ width: 200, 'float':'right', 'vertical-align':'middle'}}
-                />
+                <div id="searchbox">
+              <Search placeholder="input search text" onSearch={value => console.log(value)}  enterButton />
+              </div>
               </Header>
   
               <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
                 
-                <FoodPage title={this.props.location.pathname.split('/food/')[1].replace(/_/g," ")}/>
+                <FoodPage title={this.props.location.pathname.split('/food/')[1]}/>
   
               </Content>
               <Footer style={{ textAlign: 'center' }}>KAIST ?2020 Created by Youngjae Jang and Hongseok Kang</Footer>
@@ -73,11 +71,9 @@ class Home extends Component{
                 <Menu.Item key="2" style={{'padding-left':10, 'padding-right':10}}>My Menu</Menu.Item>
                 <Menu.Item key="3" style={{'padding-left':10, 'padding-right':10}}>nav 3</Menu.Item>
               </Menu>
-              <Search id="searchbox"
-                placeholder="input search text"
-                onSearch={value => console.log(value)}
-                style={{ width: 200, 'float':'right', 'vertical-align':'middle'}}
-              />
+              <div id="searchbox">
+              <Search placeholder="input search text" onSearch={value => console.log(value)}  enterButton />
+              </div>
             </Header>
 
             <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>

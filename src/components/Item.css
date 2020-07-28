@@ -1,22 +1,13 @@
 
 .foodlist li{
-    background-color: rgb(233, 233, 233);
-    border-radius: 5px;
-    padding: 10px;
-    margin: 7px;
-    width: 200px;
-    height:340px;
     list-style: none;
     display: inline-block;
     text-decoration: none;
-    cursor: pointer;
     vertical-align: top;
 }
-.foodlist li:hover {
-    background-color: darkgray;
-}
-.foodlist li:active{
-    background-color: gray;
+
+.foodlist .menucard{
+    margin:10px;
 }
 
 #thumb{
@@ -36,7 +27,6 @@
 
 p{
     text-decoration: none;
-    cursor:pointer;
 }
 
 .title{
